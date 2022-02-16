@@ -1,12 +1,10 @@
+import Vue from 'vue'
+import VueX from  'vuex'
+import currentUser from "./modules/currentUser";
+Vue.use(VueX);
 
-import Vue from "vue"
-import Vuex from "vuex"
-
-import currentUser from "./modules/currentUser"
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-    modules: {
+export default new VueX.Store({
+    modules:{
         currentUser
     }
 })

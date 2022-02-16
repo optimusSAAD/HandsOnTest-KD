@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('customer', [CustomerController::class, 'index']);
+Route::post('add-update-customer', [CustomerController::class, 'store']);
+Route::post('edit-customer', [CustomerController::class, 'edit']);
+Route::post('delete-customer', [CustomerController::class, 'destroy']);
+
+Route::get('bill', [BillController::class, 'index']);
+Route::post('add-update-bill', [BillController::class, 'store']);
+Route::post('edit-bill', [BillController::class, 'edit']);
+Route::post('delete-bill', [BillController::class, 'destroy']);

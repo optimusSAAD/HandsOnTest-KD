@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div id="app" class="card-body">
+{{--                    <login-form></login-form>--}}
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -71,3 +72,9 @@
     </div>
 </div>
 @endsection
+<script>
+    import LoginForm from "../../js/components/loginForm";
+    export default {
+        components: {LoginForm}
+    }
+</script>

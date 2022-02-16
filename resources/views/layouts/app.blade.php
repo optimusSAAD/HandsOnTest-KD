@@ -38,6 +38,8 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -52,23 +54,23 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                            @if(Auth::user()->isadmin)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/customer') }}">Customer</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/bill') }}">Bill</a>
+                            </li>
+                            @endif
+                            <li class="nav-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="nav-link" type="submit">
+                                        {{ __('Logout') }}
+                                    </button>
+                                </form>
+                            </li>
+
                         @endguest
                     </ul>
                 </div>
